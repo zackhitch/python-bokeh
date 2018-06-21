@@ -28,9 +28,14 @@ graph.node_renderer.data_source.add(color_list, 'color')
 graph.node_renderer.glyph = Oval(height=30, width=30, fill_color='color')
 
 start_points, end_points = [], []
-for vert in graph_data.vertexes:
+# for vert in graph_data.vertexes:
+#     for edge in vert.edges:
+#         start_points.append(graph_data.vertexes.index(vert))
+#         end_points.append(graph_data.vertexes.index(edge.destination))
+
+for start_point, vert in enumerate(graph_data.vertexes):
     for edge in vert.edges:
-        start_points.append(graph_data.vertexes.index(vert))
+        start_points.append(start_point)
         end_points.append(graph_data.vertexes.index(edge.destination))
 
 # this is drawing the edges from start to end
